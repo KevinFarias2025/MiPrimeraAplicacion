@@ -18,9 +18,9 @@ class MainActivity : AppCompatActivity() {
         val saludo = crearSaludo(nombreUsuario, edadUsuario)
         val esMayor = calcularMayoriaEdad(edadUsuario)
 
-        mostrarResultado(saludo + ". ¿Es mayor de edad? " + esMayor)
+        // Usamos esMayorDeEdad y promedioNotas para quitar los warnings
+        mostrarResultado(saludo + ". ¿Es mayor? " + esMayor + " (Promedio: " + promedioNotas + ")")
     }
-
     fun crearSaludo(nombre: String, edad: Int): String {
         val mensaje = "Hola " + nombre + ", tienes " + edad + " años"
         return mensaje
