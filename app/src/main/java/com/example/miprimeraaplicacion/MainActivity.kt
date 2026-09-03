@@ -9,18 +9,20 @@ class MainActivity : AppCompatActivity() {
     val nombreUsuario: String = "Ana"
     var edadUsuario: Int = 20
     var promedioNotas: Double = 6.5
-    val esMayorDeEdad: Boolean = true
+    var esMayorDeEdad: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val saludo = crearSaludo(nombreUsuario, edadUsuario)
-        val esMayor = calcularMayoriaEdad(edadUsuario)
+        println(promedioNotas)
 
-        // Usamos esMayorDeEdad y promedioNotas para quitar los warnings
-        mostrarResultado(saludo + ". ¿Es mayor? " + esMayor + " (Promedio: " + promedioNotas + ")")
+        val saludo = crearSaludo(nombreUsuario, edadUsuario)
+        esMayorDeEdad = calcularMayoriaEdad(edadUsuario)
+
+        mostrarResultado(saludo + ". ¿Es mayor de edad? " + esMayorDeEdad)
     }
+
     fun crearSaludo(nombre: String, edad: Int): String {
         val mensaje = "Hola " + nombre + ", tienes " + edad + " años"
         return mensaje
@@ -37,8 +39,6 @@ class MainActivity : AppCompatActivity() {
     fun mostrarResultado(mensaje: String) {
         val textView = findViewById<TextView>(android.R.id.text1)
         if (textView == null) {
-            // Si el ID del texto en activity_main.xml tiene un ID propio,
-            // intenta buscar cualquier TextView disponible en pantalla:
             val root = findViewById<android.view.ViewGroup>(android.R.id.content)
             findAndSetTextView(root, mensaje)
         } else {
